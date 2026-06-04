@@ -325,7 +325,7 @@ function App() {
               Clear BTC weekly BUY and SELL labels shown directly on the TradingView chart.
             </p>
             <div className="buttonRow">
-              <Button href="#pricing">Request Invite-Only Access</Button>
+              <Button href={payhipMonthlyUrl} onClick={(event) => handlePayhipCheckout(payhipMonthlyUrl, event)}>Get SatsOra Access</Button>
               <Button href="#historical-results" variant="secondary">View Historical Results</Button>
             </div>
             <p className="microcopy">Manual activation after payment. TradingView username required.</p>
@@ -452,25 +452,26 @@ function App() {
             <PricingCard
               title="Monthly Access"
               price="Coming soon"
+              label="Founders Access"
               description="Flexible monthly access to the private SatsOra TradingView indicator."
-              cta="Request Invite-Only Access"
-              note="TradingView username required after payment."
+              cta="Start Monthly Access"
+              note="After payment, enter your TradingView username at checkout. Access is added manually, usually within 24 hours."
               href={payhipMonthlyUrl}
               onClick={(event) => handlePayhipCheckout(payhipMonthlyUrl, event)}
             />
             <PricingCard
               title="Yearly Access"
-              label="Best Value"
+              label="Best value / Founders Access"
               price="Founder price coming soon"
               description="Longer-term access at a reduced early access price."
-              cta="Request Invite-Only Access"
-              note="Manual activation after payment."
+              cta="Get Yearly Access"
+              note="After payment, enter your TradingView username at checkout. Access is added manually, usually within 24 hours."
               href={payhipYearlyUrl}
               onClick={(event) => handlePayhipCheckout(payhipYearlyUrl, event)}
               featured
             />
           </div>
-          <p className="earlyAccessNote">Access is added manually after payment. SatsOra is educational software, not financial advice.</p>
+          <p className="earlyAccessNote">After payment, enter your TradingView username at checkout. Access is added manually, usually within 24 hours.</p>
         </section>
 
         <section className="section compactSection accessOverview" id="how-it-works">
@@ -713,7 +714,7 @@ function App() {
           </SectionHeader>
           <div className="buttonRow center">
             <Button href="#pricing">Request Invite-Only Access</Button>
-            <Button href="#historical-results" variant="secondary">View Historical Results</Button>
+            <Button href={payhipYearlyUrl} variant="secondary" onClick={(event) => handlePayhipCheckout(payhipYearlyUrl, event)}>Choose Yearly Access</Button>
           </div>
           <p className="riskLine finalDisclaimer">{riskDisclaimer}</p>
           <p className="finalRiskText">SatsOra does not connect to exchanges, does not place trades, and does not guarantee profits. Historical examples are for educational purposes only and do not predict future results.</p>
@@ -724,6 +725,7 @@ function App() {
         <div>
           <a className="logo" href="#top"><span>SatsOra</span></a>
           <p>This product is independent and is not affiliated with, endorsed by, or sponsored by TradingView.</p>
+          <p>SatsOra is operated by Sparkbyte Solutions Ltd. Educational chart analysis only. Not financial advice. Past performance does not guarantee future results.</p>
         </div>
         <nav aria-label="Footer navigation">
           <a href={`mailto:${links.email}`}>Contact: {links.email}</a>
