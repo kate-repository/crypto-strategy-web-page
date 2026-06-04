@@ -181,9 +181,12 @@ const faqs = [
   ['Do you offer refunds?', 'Because access is delivered digitally through TradingView, refunds are handled case by case and are not guaranteed.'],
 ];
 
-function Button({ href, children, variant = 'primary' }) {
+const payhipMonthlyUrl = 'https://payhip.com/order?link=5uOK4&pricing_plan=lKzy6vE5BX';
+const payhipYearlyUrl = 'https://payhip.com/order?link=5uOK4&pricing_plan=V6B73q2pBr';
+
+function Button({ href, children, variant = 'primary', onClick }) {
   return (
-    <a className={`button ${variant === 'secondary' ? 'buttonSecondary' : ''}`} href={href}>
+    <a className={`button ${variant === 'secondary' ? 'buttonSecondary' : ''}`} href={href} onClick={onClick}>
       {children}
     </a>
   );
@@ -265,17 +268,28 @@ function ScreenshotLightbox({ selectedImage, onClose }) {
   );
 }
 
-function PricingCard({ title, price, label, description, note, cta, href, featured = false }) {
+function PricingCard({ title, price, label, description, note, cta, href, onClick, featured = false }) {
   return (
     <article className={`pricingCard ${featured ? 'featured' : ''}`}>
       {label && <p className="priceLabel">{label}</p>}
       <h3>{title}</h3>
       <p className="price">{price}</p>
       <p className="pricingDescription">{description}</p>
-      <Button href={href}>{cta}</Button>
+      <Button href={href} onClick={onClick}>{cta}</Button>
       <p className="pricingNote">{note}</p>
     </article>
   );
+}
+
+function handlePayhipCheckout(url, event) {
+  event.preventDefault();
+
+  if (typeof window.gtag_report_conversion === 'function') {
+    window.gtag_report_conversion(url);
+    return;
+  }
+
+  window.location.href = url;
 }
 
 function App() {
@@ -441,7 +455,8 @@ function App() {
               description="Flexible monthly access to the private SatsOra TradingView indicator."
               cta="Request Invite-Only Access"
               note="TradingView username required after payment."
-              href="#get-access"
+              href={payhipMonthlyUrl}
+              onClick={(event) => handlePayhipCheckout(payhipMonthlyUrl, event)}
             />
             <PricingCard
               title="Yearly Access"
@@ -450,7 +465,8 @@ function App() {
               description="Longer-term access at a reduced early access price."
               cta="Request Invite-Only Access"
               note="Manual activation after payment."
-              href="#get-access"
+              href={payhipYearlyUrl}
+              onClick={(event) => handlePayhipCheckout(payhipYearlyUrl, event)}
               featured
             />
           </div>
