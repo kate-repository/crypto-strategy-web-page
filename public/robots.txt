@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: WEBSITE_URL_HERE/sitemap.xml
+Sitemap: https://satsora.com/sitemap.xml

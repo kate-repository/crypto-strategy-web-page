@@ -1,6 +1,6 @@
-# BTC TradingView Strategy Landing Page
+# SatsOra TradingView Strategy Landing Page
 
-Professional one-page sales landing page for a private invite-only TradingView crypto strategy. The page positions the product as a BTC-first proprietary trend and momentum signal system for TradingView while avoiding profit promises, fake results, fake testimonials, and method disclosure.
+Professional one-page sales landing page for SatsOra, a private invite-only BTC-first TradingView crypto strategy. The page positions the product as a weekly trend signal system while avoiding profit promises, fake results, and method disclosure.
 
 ## Tech Stack
 
@@ -45,16 +45,13 @@ Current placeholders:
 - `USDT_WALLET_ADDRESS_HERE`
 - `USDC_WALLET_ADDRESS_HERE`
 - `BTC_WALLET_ADDRESS_HERE`
-- `CONTACT_EMAIL_HERE`
 - `WEBSITE_URL_HERE`
 
-## Replace Screenshots
+Contact email is set to `info@satsora.com`.
 
-Screenshot placeholders are rendered by the `ScreenshotPlaceholder` component in `src/App.jsx`. To use real TradingView screenshots later:
+## Screenshot Assets
 
-1. Add optimized images to `public/screenshots/`.
-2. Replace the placeholder chart markup with `<img>` elements.
-3. Keep descriptive `alt` text for SEO and accessibility.
+TradingView screenshots are imported from `src/resources/` in `src/App.jsx`. Keep descriptive `alt` text and use lazy loading for non-hero images when adding or changing screenshots.
 
 ## Update SEO
 

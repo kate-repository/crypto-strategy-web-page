@@ -1,0 +1,9 @@
+{
+  "name": "SatsOra",
+  "short_name": "SatsOra",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#070707",
+  "theme_color": "#F7931A",
+  "description": "Private invite-only TradingView strategy for BTC-first weekly trend signals."
+}
