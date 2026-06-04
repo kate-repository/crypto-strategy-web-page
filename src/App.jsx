@@ -1004,7 +1004,7 @@ function HomePage() {
 
       <footer className="footer">
         <div>
-          <a className="logo" href="#top"><span>SatsOra</span></a>
+          <a className="logo" href="/"><span>SatsOra</span></a>
           <p>This product is independent and is not affiliated with, endorsed by, or sponsored by TradingView.</p>
           <p>SatsOra is operated by Sparkbyte Solutions Ltd. Educational chart analysis only. Not financial advice. Past performance does not guarantee future results.</p>
         </div>
