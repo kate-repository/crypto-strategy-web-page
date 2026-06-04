@@ -451,7 +451,7 @@ function App() {
           <div className="pricingGrid foundersPricingGrid">
             <PricingCard
               title="Monthly Access"
-              price="Coming soon"
+              price="€19"
               label="Founders Access"
               description="Flexible monthly access to the private SatsOra TradingView indicator."
               cta="Start Monthly Access"
@@ -462,7 +462,7 @@ function App() {
             <PricingCard
               title="Yearly Access"
               label="Best value / Founders Access"
-              price="Founder price coming soon"
+              price="€149"
               description="Longer-term access at a reduced early access price."
               cta="Get Yearly Access"
               note="After payment, enter your TradingView username at checkout. Access is added manually, usually within 24 hours."
