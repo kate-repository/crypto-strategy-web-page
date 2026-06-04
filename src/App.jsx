@@ -220,7 +220,9 @@ function ScreenshotFigure({ image, title, text, alt, width, height, loading = 'l
         {meta && <span className="captionMeta">{meta}</span>}
         <strong>{title}</strong>
         <span>{text}</span>
-        <span className="zoomHint" aria-hidden="true">{zoomLabel}</span>
+        <button className="zoomHint zoomHintButton" type="button" onClick={handleOpen} aria-label={`Enlarge screenshot: ${title}`}>
+          {zoomLabel}
+        </button>
       </figcaption>
     </figure>
   );

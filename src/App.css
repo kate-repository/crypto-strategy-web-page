@@ -1087,6 +1087,26 @@ figcaption {
   text-transform: none;
 }
 
+.zoomHintButton {
+  align-self: start;
+  min-height: 0;
+  padding: 6px 9px;
+  border-radius: 999px;
+  background: rgba(247, 147, 26, 0.06);
+  box-shadow: none;
+  color: #f2d4aa;
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: none;
+  width: fit-content;
+}
+
+.zoomHintButton:hover {
+  border-color: rgba(255, 181, 71, 0.38);
+  background: rgba(247, 147, 26, 0.1);
+  box-shadow: none;
+}
+
 figcaption strong {
   color: var(--text);
 }
@@ -1810,6 +1830,11 @@ summary {
 
   .lightboxClose {
     width: auto;
+  }
+
+  .zoomHintButton {
+    width: fit-content;
+    min-height: 0;
   }
 
   .lightbox {
