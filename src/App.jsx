@@ -326,7 +326,7 @@ function App() {
         <section className="hero section">
           <div className="heroCopy">
             <p className="eyebrow">PRIVATE BTC-FIRST TRADINGVIEW INDICATOR</p>
-            <h1><span className="headlinePrimary">Weekly Bitcoin BUY/SELL</span><span className="headlineLine">Signals on TradingView</span></h1>
+            <h1><span className="headlinePrimary">Bitcoin BUY/SELL</span><span className="headlineLine">Signals on TradingView</span></h1>
             <p className="heroLead">
               Clear BTC weekly BUY and SELL labels shown directly on the TradingView chart.
             </p>
