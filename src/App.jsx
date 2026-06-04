@@ -7,11 +7,9 @@ import btcWeeklyPrice from './resources/BTC weekly price.png';
 import closerChart from './resources/closer-chart2.png';
 import inviteOnlyChart from './resources/invite-only  access chart.png';
 import inviteOnlyAccess from './resources/invite-only access screenshot.png';
+import satsoraLogo from './resources/satsora-logo.png';
 
 const links = {
-  monthly: 'PAYHIP_MONTHLY_LINK_HERE',
-  annual: 'PAYHIP_ANNUAL_LINK_HERE',
-  payhip: 'PAYHIP_LINK_HERE',
   email: 'info@satsora.com',
 };
 
@@ -21,7 +19,7 @@ const navItems = [
   ['Alerts', '#alerts'],
   ['Pricing', '#pricing'],
   ['FAQ', '#faq'],
-  ['Get Access', '#get-access'],
+  ['Get Access', '#pricing'],
 ];
 
 const whyBullets = [
@@ -89,7 +87,7 @@ const actionCards = [
   {
     image: inviteOnlyChart,
     title: 'Private invite-only TradingView access',
-    text: "Access is delivered through TradingView's invite-only script system. Once activated, SatsOra appears inside your TradingView indicators.",
+    text: "Access is delivered through TradingView's invite-only script system. Once activated, SatsOra appears in your TradingView indicators.",
     alt: 'TradingView chart showing invite-only SatsOra strategy access',
     width: 2926,
     height: 1468,
@@ -104,22 +102,22 @@ const transparencyCards = [
 ];
 
 const credibilityItems = [
-  ['No exchange connection', 'No API keys, broker login, or wallet connection required'],
-  ['Manual activation', 'Invite-only access is reviewed and added personally'],
-  ['Private TradingView script', 'The indicator logic remains protected'],
-  ['Transparent limits', 'Historical examples include assumptions and risk notes'],
+  ['No exchange connection', 'No API keys, broker login, or wallet connection required.'],
+  ['Manual activation', 'Invite-only access is reviewed and added personally.'],
+  ['Private TradingView script', 'The indicator logic remains protected.'],
+  ['Transparent limits', 'Historical examples include assumptions and risk notes.'],
 ];
 
 const heroFeatures = [
-  ['Weekly Signal Logic', 'Built around the 1W BTC timeframe'],
-  ['Clear BUY/SELL Labels', 'Signals appear directly on your TradingView chart'],
-  ['No Exchange Connection', 'No API keys, broker login, or automated execution'],
+  ['Weekly Signal Logic', 'Built around the 1W BTC timeframe.'],
+  ['Clear BUY/SELL Labels', 'Signals appear directly on your TradingView chart.'],
+  ['No Exchange Connection', 'No API keys, broker login, wallet connection, or automated execution.'],
 ];
 
 const proofCards = [
   ['Fewer signals', 'Designed for weekly trend changes, not constant entries'],
   ['Cleaner decisions', 'BUY and SELL labels appear directly on the chart'],
-  ['TradingView-native', 'Use it inside your existing TradingView workflow'],
+  ['TradingView-native', 'Use it with your existing TradingView workflow'],
 ];
 
 const historicalMetrics = [
@@ -145,7 +143,7 @@ const accessSteps = [
   ['Purchase access', 'Choose monthly or yearly access.'],
   ['Send your TradingView username', 'This is required to activate the private script.'],
   ['Manual invite-only activation', 'Access is reviewed and added personally.'],
-  ['Use inside TradingView', 'Add SatsOra to your chart and configure alerts.'],
+  ['Use SatsOra on TradingView', 'Add SatsOra to your chart and configure alerts.'],
 ];
 
 const riskDisclaimer = 'Educational tool only. SatsOra does not provide financial advice. Crypto trading involves risk, and historical performance does not guarantee future results.';
@@ -161,25 +159,6 @@ const includedItems = [
   'Future strategy updates while subscribed',
   'Access managed through TradingView',
   'May be tested on other liquid crypto markets',
-];
-
-const monthlyFeatures = [
-  'Keep this price while your subscription stays active',
-  'Private invite-only TradingView indicator access',
-  'BTC-first weekly BUY and SELL signal logic',
-  'Setup guide included',
-  'Basic alert instructions',
-  'Cancel according to Payhip/payment provider rules',
-  'Later price for new users: $39/month',
-];
-
-const annualFeatures = [
-  'One year of access',
-  'Private TradingView indicator access included',
-  'Setup guide included',
-  'Basic alert instructions',
-  'Indicator updates while active',
-  'Renewal price may change in future',
 ];
 
 const wallets = [
@@ -286,16 +265,15 @@ function ScreenshotLightbox({ selectedImage, onClose }) {
   );
 }
 
-function PricingCard({ title, price, label, features, cta, href, featured = false }) {
+function PricingCard({ title, price, label, description, note, cta, href, featured = false }) {
   return (
     <article className={`pricingCard ${featured ? 'featured' : ''}`}>
-      <p className="priceLabel">{label}</p>
+      {label && <p className="priceLabel">{label}</p>}
       <h3>{title}</h3>
       <p className="price">{price}</p>
-      <ul className="checkList">
-        {features.map((feature) => <li key={feature}>{feature}</li>)}
-      </ul>
+      <p className="pricingDescription">{description}</p>
       <Button href={href}>{cta}</Button>
+      <p className="pricingNote">{note}</p>
     </article>
   );
 }
@@ -310,14 +288,17 @@ function App() {
     <>
       <header className="siteHeader">
         <nav className="nav" aria-label="Primary navigation">
-          <a className="logo" href="#top" aria-label="SatsOra home">
-            <span>SatsOra</span>
-            <small>BTC-first TradingView signals</small>
+          <a className="logo headerLogo" href="#top" aria-label="SatsOra home">
+            <img className="headerLogoIcon" src={satsoraLogo} alt="" width="32" height="32" />
+            <span className="headerLogoText">
+              <strong>SatsOra</strong>
+              <small>BTC-first TradingView signals</small>
+            </span>
           </a>
           <div className="navLinks">
             {navItems.map(([label, href]) => <a href={href} key={label}>{label}</a>)}
           </div>
-          <Button href="#get-access">Request Invite-Only Access</Button>
+          <Button href="#pricing">Request Invite-Only Access</Button>
         </nav>
       </header>
 
@@ -325,13 +306,13 @@ function App() {
         <section className="hero section">
           <div className="heroCopy">
             <p className="eyebrow">PRIVATE BTC-FIRST TRADINGVIEW INDICATOR</p>
-            <h1><span className="headlinePrimary">Bitcoin Weekly Signals</span><span className="headlineLine">Inside TradingView</span></h1>
+            <h1><span className="headlinePrimary">Weekly Bitcoin BUY/SELL</span><span className="headlineLine">Signals on TradingView</span></h1>
             <p className="heroLead">
-              Turn BTC weekly trend structure into clear BUY and SELL signals directly inside TradingView. SatsOra is designed for traders who want fewer, higher-timeframe signals — not daily noise, scalping alerts, or candle-by-candle reactions.
+              Clear BTC weekly BUY and SELL labels shown directly on the TradingView chart.
             </p>
             <div className="buttonRow">
-              <Button href="#get-access">Request Invite-Only Access</Button>
-              <Button href="#historical-results" variant="secondary">See Historical Results</Button>
+              <Button href="#pricing">Request Invite-Only Access</Button>
+              <Button href="#historical-results" variant="secondary">View Historical Results</Button>
             </div>
             <p className="microcopy">Manual activation after payment. TradingView username required.</p>
             <div className="heroFeatureGrid">
@@ -345,8 +326,8 @@ function App() {
           </div>
           <ScreenshotFigure
             image={closerChart}
-            title="Clear BTC weekly BUY and SELL labels inside TradingView."
-            text="This example shows how SatsOra displays higher-timeframe signal changes on a BTCUSD weekly chart."
+            title="Clear BTC weekly BUY and SELL labels shown directly on the TradingView chart."
+            text="This historical example shows how SatsOra displays higher-timeframe signal changes on a BTCUSD weekly chart."
             alt="Weekly BTCUSD TradingView chart showing historical SatsOra BUY and SELL labels."
             width={2048}
             height={1121}
@@ -373,7 +354,7 @@ function App() {
           <div className="positioningCopy">
             <p className="eyebrow">Higher-timeframe clarity</p>
             <h2>Built for major BTC trend decisions — not market noise.</h2>
-            <p>SatsOra is designed for traders who do not want constant alerts. The indicator focuses on higher-timeframe BTC trend changes and displays clear BUY and SELL labels directly inside TradingView.</p>
+            <p>SatsOra is designed for traders who do not want constant alerts. The indicator focuses on higher-timeframe BTC trend changes and displays clear BUY and SELL labels directly on the TradingView chart.</p>
           </div>
           <div className="positioningCards">
             {proofCards.map(([title, text]) => (
@@ -417,9 +398,9 @@ function App() {
               onOpen={openScreenshot}
             />
             <article className="comparisonCard">
-              <p className="eyebrow">Strategy vs Buy & Hold</p>
+              <p className="eyebrow">Strategy vs BUY & Hold</p>
               <h3>Same historical BTCUSD window</h3>
-              <p>Over the same historical BTCUSD test window, the SatsOra strategy simulation showed approximately +$38,521 net profit, compared with approximately +$10,804 for buy and hold in the TradingView tester screenshot.</p>
+              <p>Over the same historical BTCUSD test window, the SatsOra strategy simulation showed approximately +$38,521 net profit, compared with approximately +$10,804 for BUY and hold in the TradingView tester screenshot.</p>
               <div className="comparisonValues">
                 <div>
                   <span>Strategy test</span>
@@ -427,7 +408,7 @@ function App() {
                   <small>Historical net profit</small>
                 </div>
                 <div>
-                  <span>Buy & Hold</span>
+                  <span>BUY & Hold</span>
                   <strong>~+$10,804</strong>
                   <small>Same BTCUSD test window</small>
                 </div>
@@ -442,6 +423,38 @@ function App() {
             </ul>
           </article>
           <p className="riskLine">{riskDisclaimer}</p>
+        </section>
+
+        <section className="section foundersPricing" id="pricing">
+          <div className="pricingIntro">
+            <div>
+              <img className="pricingLogo" src={satsoraLogo} alt="SatsOra logo" width="56" height="56" loading="lazy" />
+              <p className="eyebrow">EARLY ACCESS</p>
+              <h2>Early Access Pricing Coming Soon</h2>
+              <p>Founder pricing will be available for the first SatsOra users before the public launch price increases.</p>
+            </div>
+          </div>
+          <div className="pricingGrid foundersPricingGrid">
+            <PricingCard
+              title="Monthly Access"
+              price="Coming soon"
+              description="Flexible monthly access to the private SatsOra TradingView indicator."
+              cta="Request Invite-Only Access"
+              note="TradingView username required after payment."
+              href="#get-access"
+            />
+            <PricingCard
+              title="Yearly Access"
+              label="Best Value"
+              price="Founder price coming soon"
+              description="Longer-term access at a reduced early access price."
+              cta="Request Invite-Only Access"
+              note="Manual activation after payment."
+              href="#get-access"
+              featured
+            />
+          </div>
+          <p className="earlyAccessNote">Access is added manually after payment. SatsOra is educational software, not financial advice.</p>
         </section>
 
         <section className="section compactSection accessOverview" id="how-it-works">
@@ -461,7 +474,7 @@ function App() {
 
         <section className="section compactSection" id="for-traders">
           <SectionHeader title="For traders who want fewer, clearer BTC signals">
-            SatsOra turns weekly Bitcoin trend structure into direct BUY and SELL labels, giving higher-timeframe traders a focused workflow inside TradingView.
+            SatsOra turns weekly Bitcoin trend structure into direct BUY and SELL labels, giving higher-timeframe traders a focused workflow on TradingView.
           </SectionHeader>
           <div className="split">
             <article className="card iconCard">
@@ -481,7 +494,7 @@ function App() {
 
         <section className="section" id="why">
           <SectionHeader title="Focus on major BTC trend shifts, not daily market noise.">
-            SatsOra filters short-term movement into a clearer weekly signal workflow. The indicator displays Bitcoin BUY and SELL signals directly inside TradingView so traders can evaluate major trend changes without reacting to every candle.
+            SatsOra filters short-term movement into a clearer weekly signal workflow. The indicator displays Bitcoin BUY and SELL signals directly on the TradingView chart so traders can evaluate major trend changes without reacting to every candle.
           </SectionHeader>
           <div className="split">
             <ul className="checkList largeList">
@@ -603,8 +616,8 @@ function App() {
         </section>
 
         <section className="section" id="what-you-get">
-          <SectionHeader title="Private indicator access, ready inside TradingView">
-            Receive the SatsOra indicator, clear weekly BUY and SELL labels, setup guidance, and an alert-ready workflow inside TradingView.
+          <SectionHeader title="Private indicator access, ready on TradingView">
+            Receive the SatsOra indicator, clear weekly BUY and SELL labels, setup guidance, and an alert-ready workflow on TradingView.
           </SectionHeader>
           <ul className="includedList">
             {includedItems.map((item) => <li key={item}>{item}</li>)}
@@ -612,38 +625,13 @@ function App() {
           <p className="warningBox">SatsOra is not an automated trading bot. It does not connect to an exchange, place trades, or require API keys.</p>
         </section>
 
-        <section className="section band" id="pricing">
-          <SectionHeader eyebrow="Private indicator access" title="Get private access to the SatsOra TradingView indicator.">
-            After purchase, your TradingView username is manually activated for the private SatsOra indicator. Once access is added, you can apply it to your BTC chart and configure TradingView alerts after signal confirmation.
-          </SectionHeader>
-          <div className="pricingGrid">
-            <PricingCard title="Monthly Access" price="$19/month" label="PRIVATE MONTHLY ACCESS" features={monthlyFeatures} cta="Request Invite-Only Access" href={links.monthly} featured />
-            <PricingCard title="Annual Access" price="$149/year" label="PRIVATE ANNUAL ACCESS" features={annualFeatures} cta="Request Invite-Only Access" href={links.annual} />
-          </div>
-          <article className="afterPaymentBox">
-            <h3>After payment</h3>
-            <ol>
-              <li>Choose monthly or yearly access.</li>
-              <li>Send the TradingView username that should receive access.</li>
-              <li>Invite-only access is reviewed and added personally.</li>
-              <li>Add SatsOra to your chart and configure alerts.</li>
-            </ol>
-            <p>Access is activated manually, usually after payment details are checked.</p>
-          </article>
-          <p className="riskLine">Payhip subscriptions can be canceled according to Payhip/payment provider rules. Crypto payments are manual and prepaid for the selected period.</p>
-        </section>
-
         <section className="section" id="get-access">
           <SectionHeader title="Choose your payment method" />
           <div className="paymentGrid">
             <article className="card paymentCard">
               <h3>Payhip Checkout</h3>
-              <p>Complete checkout using the payment methods available through Payhip, then send your TradingView username for manual activation.</p>
-              <div className="buttonRow">
-                <Button href={links.monthly}>Monthly Access</Button>
-                <Button href={links.annual} variant="secondary">Annual Access</Button>
-              </div>
-              <a className="textLink" href={links.payhip}>General Payhip checkout fallback</a>
+              <p>Early Access pricing is coming soon. Use the pricing cards to request invite-only access.</p>
+              <Button href="#pricing">View Early Access</Button>
             </article>
             <article className="card paymentCard">
               <h3>Crypto Wallet Transfer</h3>
@@ -705,13 +693,14 @@ function App() {
 
         <section className="section finalCta">
           <SectionHeader title="Add clear BTC weekly signals to your TradingView chart.">
-            Request private access to SatsOra and use a focused weekly BUY and SELL signal workflow inside TradingView.
+            Request private access to SatsOra and use a focused weekly BUY and SELL signal workflow on TradingView.
           </SectionHeader>
           <div className="buttonRow center">
-            <Button href="#get-access">Request Invite-Only Access</Button>
-            <Button href="#historical-results" variant="secondary">See Historical Results</Button>
+            <Button href="#pricing">Request Invite-Only Access</Button>
+            <Button href="#historical-results" variant="secondary">View Historical Results</Button>
           </div>
           <p className="riskLine finalDisclaimer">{riskDisclaimer}</p>
+          <p className="finalRiskText">SatsOra does not connect to exchanges, does not place trades, and does not guarantee profits. Historical examples are for educational purposes only and do not predict future results.</p>
         </section>
       </main>
 

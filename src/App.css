@@ -180,6 +180,45 @@ code {
   font-weight: 700;
 }
 
+.headerLogo {
+  display: grid;
+  grid-template-columns: 32px auto;
+  align-items: center;
+  gap: 10px;
+  padding-left: 0;
+}
+
+.headerLogo::before {
+  display: none;
+}
+
+.headerLogoIcon,
+.pricingLogo {
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 18px rgba(245, 158, 11, 0.35);
+}
+
+.headerLogoIcon {
+  width: 32px;
+  height: 32px;
+}
+
+.headerLogoText {
+  display: grid;
+  gap: 2px;
+}
+
+.headerLogoText strong {
+  line-height: 1;
+}
+
+.pricingLogo {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 18px;
+}
+
 .navLinks {
   display: flex;
   align-items: center;
@@ -1133,20 +1172,141 @@ tr:last-child td {
 }
 
 .pricingCard {
-  background: var(--panel-strong);
+  position: relative;
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  background:
+    linear-gradient(155deg, rgba(247, 147, 26, 0.07), rgba(255, 255, 255, 0.012)),
+    var(--panel-strong);
 }
 
 .pricingCard.featured {
   border-color: rgba(247, 147, 26, 0.62);
-  box-shadow: var(--orange-shadow), var(--shadow);
+  background:
+    radial-gradient(circle at 88% 4%, rgba(247, 147, 26, 0.18), transparent 18rem),
+    linear-gradient(155deg, rgba(247, 147, 26, 0.1), rgba(255, 255, 255, 0.014)),
+    var(--panel-strong);
+  box-shadow: 0 0 58px rgba(247, 147, 26, 0.11), var(--shadow);
 }
 
 .price {
-  margin: 16px 0 4px;
+  margin: 18px 0 8px;
   color: var(--text);
-  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-size: clamp(2.1rem, 4vw, 3.4rem);
   font-weight: 900;
   line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+.pricingDescription {
+  max-width: 500px;
+  margin: 0;
+  color: #c8d0da;
+}
+
+.pricingCard > .button {
+  width: 100%;
+  margin-top: auto;
+}
+
+.pricingNote {
+  margin: 14px 0 0;
+  color: #d5b47f;
+  font-size: 0.84rem;
+  line-height: 1.5;
+}
+
+.foundersPricing {
+  margin-top: 36px;
+  padding: 72px 32px;
+  border: 1px solid rgba(247, 147, 26, 0.27);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 85% 8%, rgba(247, 147, 26, 0.14), transparent 30rem),
+    linear-gradient(155deg, rgba(255, 181, 71, 0.055), rgba(255, 255, 255, 0.012)),
+    rgba(9, 12, 15, 0.86);
+  box-shadow: 0 26px 80px rgba(0, 0, 0, 0.3);
+}
+
+.pricingIntro {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 28px;
+  margin-bottom: 30px;
+}
+
+.pricingIntro > div {
+  max-width: 860px;
+}
+
+.pricingIntro h2 {
+  margin-bottom: 14px;
+}
+
+.pricingIntro p:last-child {
+  margin-bottom: 0;
+}
+
+.activationNote,
+.priceLabel {
+  width: fit-content;
+  padding: 7px 10px;
+  border: 1px solid rgba(247, 147, 26, 0.3);
+  border-radius: 999px;
+  background: rgba(247, 147, 26, 0.09);
+  color: #ffd18b;
+  font-size: 0.75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.activationNote {
+  flex: 0 0 auto;
+}
+
+.foundersPricingGrid {
+  gap: 20px;
+}
+
+.earlyAccessNote,
+.finalRiskText {
+  margin: 22px 0 0;
+  padding: 15px 17px;
+  border: 1px solid rgba(247, 147, 26, 0.28);
+  border-radius: var(--radius);
+  background: rgba(247, 147, 26, 0.065);
+  color: #e4c18b;
+}
+
+.checkoutFlow {
+  margin-top: 22px;
+  padding: 24px;
+  border: 1px solid rgba(247, 147, 26, 0.24);
+  border-radius: var(--radius);
+  background: rgba(11, 15, 20, 0.72);
+}
+
+.checkoutFlowHeader .eyebrow {
+  margin-bottom: 10px;
+}
+
+.checkoutFlow .stepGrid {
+  margin-top: 22px;
+}
+
+.checkoutSupport {
+  margin: 20px 0 0;
+  padding: 13px 15px;
+  border-left: 3px solid var(--orange);
+  background: rgba(247, 147, 26, 0.06);
+  color: #e6c99d;
+  font-size: 0.9rem;
+}
+
+.foundersPricing > .riskLine {
+  margin: 18px 0 0;
 }
 
 .paymentCard {
@@ -1294,6 +1454,12 @@ summary {
 
 .finalDisclaimer {
   margin: 22px auto 0;
+  text-align: left;
+}
+
+.finalRiskText {
+  max-width: 760px;
+  margin-inline: auto;
   text-align: left;
 }
 
@@ -1474,11 +1640,11 @@ summary {
 
 @media (max-width: 680px) {
   html {
-    scroll-padding-top: 82px;
+    scroll-padding-top: 132px;
   }
 
   section[id] {
-    scroll-margin-top: 82px;
+    scroll-margin-top: 132px;
   }
 
   .nav,
@@ -1513,7 +1679,7 @@ summary {
   }
 
   h1 {
-    font-size: clamp(1.75rem, 8.2vw, 3.5rem);
+    font-size: clamp(1.65rem, 7.7vw, 3.5rem);
     line-height: 1.02;
     letter-spacing: -0.055em;
   }
@@ -1540,6 +1706,16 @@ summary {
 
   .logo small {
     display: none;
+  }
+
+  .headerLogo {
+    grid-template-columns: 28px auto;
+    gap: 8px;
+  }
+
+  .headerLogoIcon {
+    width: 28px;
+    height: 28px;
   }
 
   .nav {
@@ -1590,6 +1766,25 @@ summary {
     width: calc(100% - 36px);
     padding: 52px 18px;
     border-radius: 14px;
+  }
+
+  .foundersPricing {
+    width: calc(100% - 36px);
+    padding: 52px 18px;
+    border-radius: 14px;
+  }
+
+  .pricingIntro {
+    display: grid;
+    gap: 18px;
+  }
+
+  .activationNote {
+    white-space: normal;
+  }
+
+  .checkoutFlow {
+    padding: 18px;
   }
 
   .resultsMeta {
