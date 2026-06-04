@@ -452,8 +452,8 @@ function App() {
             <div>
               <img className="pricingLogo" src={satsoraLogo} alt="SatsOra logo" width="56" height="56" loading="lazy" />
               <p className="eyebrow">EARLY ACCESS</p>
-              <h2>Early Access Pricing Coming Soon</h2>
-              <p>Founder pricing will be available for the first SatsOra users before the public launch price increases.</p>
+              <h2>Early Access Pricing Is Now Open</h2>
+              <p>Choose monthly or yearly SatsOra access at founder pricing before the public launch price increases.</p>
             </div>
           </div>
           <div className="pricingGrid foundersPricingGrid">
