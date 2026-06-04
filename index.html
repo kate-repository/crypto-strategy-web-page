@@ -11,6 +11,34 @@
       gtag('config', 'AW-18199930711');
     </script>
 
+    <!-- Event snippet for Purchase (2) conversion click -->
+    <script>
+      function gtag_report_conversion(url) {
+        var callback = function () {
+          if (typeof(url) != 'undefined') {
+            window.location = url;
+          }
+        };
+
+        if (typeof gtag !== 'function') {
+          if (typeof(url) != 'undefined') {
+            window.location = url;
+          }
+          return false;
+        }
+
+        gtag('event', 'conversion', {
+          'send_to': 'AW-18199930711/mmzgCM3rq7YcENfOs-ZD',
+          'value': 1.0,
+          'currency': 'EUR',
+          'transaction_id': '',
+          'event_callback': callback
+        });
+
+        return false;
+      }
+    </script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SatsOra — Bitcoin Trading Strategy</title>
