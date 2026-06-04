@@ -1510,22 +1510,24 @@ summary {
   z-index: 100;
   display: grid;
   place-items: center;
-  padding: 28px;
+  padding: 14px;
   background: rgba(0, 0, 0, 0.86);
 }
 
 .lightboxContent {
   display: grid;
   gap: 12px;
-  max-width: 94vw;
-  max-height: 92vh;
+  width: min(100%, 1280px);
+  max-width: calc(100vw - 28px);
+  max-height: calc(100vh - 28px);
   margin: 0;
 }
 
 .lightboxContent img {
-  width: auto;
-  max-width: 94vw;
-  max-height: 86vh;
+  display: block;
+  width: 100%;
+  max-width: none;
+  max-height: calc(100vh - 110px);
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 12px;
   object-fit: contain;
@@ -1541,8 +1543,8 @@ summary {
 
 .lightboxClose {
   position: fixed;
-  top: 18px;
-  right: 18px;
+  top: 14px;
+  right: 14px;
   z-index: 101;
   min-height: 42px;
   border-color: rgba(255, 181, 71, 0.5);
@@ -1808,6 +1810,19 @@ summary {
 
   .lightboxClose {
     width: auto;
+  }
+
+  .lightbox {
+    padding: 10px;
+  }
+
+  .lightboxContent {
+    max-width: calc(100vw - 20px);
+    max-height: calc(100vh - 20px);
+  }
+
+  .lightboxContent img {
+    max-height: calc(100vh - 96px);
   }
 
   .includedList {
