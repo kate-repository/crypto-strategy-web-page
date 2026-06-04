@@ -5,7 +5,7 @@ import btcSellAlert from './resources/BTC sell alarm.png';
 import btcStrategyTester from './resources/BTC strategy tester.png';
 import btcTradeList from './resources/BTC-trade-list.png';
 import btcWeeklyPrice from './resources/BTC weekly price.png';
-import closerChart from './resources/closer-chart.png';
+import closerChart from './resources/closer-chart2.png';
 import inviteOnlyChart from './resources/invite-only  access chart.png';
 import inviteOnlyAccess from './resources/invite-only access screenshot.png';
 import strategySettings from './resources/strategy settings.png';
