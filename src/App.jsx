@@ -148,6 +148,279 @@ const accessSteps = [
 
 const riskDisclaimer = 'Educational tool only. SatsOra does not provide financial advice. Crypto trading involves risk, and historical performance does not guarantee future results.';
 
+const privacyPolicyIntro = [
+  'SatsOra is operated by Sparkbyte Solutions Ltd, Cyprus. This Privacy Policy explains how we collect, use, and protect personal information when you visit satsora.com, request access, purchase SatsOra access, or contact us.',
+  'SatsOra is a private TradingView indicator access service. It is educational software and does not provide financial advice, investment advice, brokerage services, or trade execution.',
+];
+
+const privacyPolicySections = [
+  {
+    heading: '1. Information we collect',
+    paragraphs: ['We may collect the following information:'],
+    bullets: [
+      'Name and email address when you contact us, request access, or complete a purchase.',
+      'TradingView username when needed to manually activate invite-only access.',
+      'Payment and billing information processed through Payhip and its payment providers.',
+      'Order information, subscription status, and purchase history.',
+      'Messages you send to us for support or access requests.',
+      'Basic website and technical data such as browser type, device type, pages visited, referral source, and approximate location where analytics or advertising measurement tools are used.',
+    ],
+    afterBullets: ['We do not store full card numbers or full payment card details on our website.'],
+  },
+  {
+    heading: '2. How we use your information',
+    paragraphs: ['We use your information to:'],
+    bullets: [
+      'Provide and manage SatsOra access.',
+      'Manually activate TradingView invite-only access.',
+      'Process purchases, subscriptions, renewals, refunds, and customer support.',
+      'Send important service messages related to your access or payment.',
+      'Respond to questions and support requests.',
+      'Maintain website security and prevent abuse.',
+      'Improve the website, product, and customer experience.',
+      'Comply with accounting, tax, legal, and regulatory obligations.',
+    ],
+  },
+  {
+    heading: '3. Legal basis for processing',
+    bullets: [
+      'Contract: to provide the product or service you purchased or requested.',
+      'Legal obligation: to keep required business, tax, and accounting records.',
+      'Legitimate interest: to operate, protect, and improve SatsOra.',
+      'Consent: where consent is required, such as for optional marketing or certain cookies.',
+    ],
+  },
+  {
+    heading: '4. Payments and third-party services',
+    paragraphs: [
+      'Payments are processed through Payhip and its payment providers. These providers may collect and process payment, billing, tax, and fraud-prevention information according to their own privacy policies.',
+      'SatsOra may also rely on third-party services for hosting, analytics, advertising measurement, email communication, and customer support.',
+      'TradingView access requires a TradingView username. Your use of TradingView is subject to TradingView’s own terms and privacy policy.',
+    ],
+  },
+  {
+    heading: '5. Cookies and analytics',
+    paragraphs: [
+      'The website may use essential cookies and similar technologies needed for website functionality, payment flow, security, analytics, and advertising measurement.',
+      'You can control cookies through your browser settings. Blocking some cookies may affect website functionality or checkout tracking.',
+    ],
+  },
+  {
+    heading: '6. Sharing of information',
+    paragraphs: ['We do not sell your personal information.', 'We may share information only when necessary with:'],
+    bullets: [
+      'Payment processors and checkout providers.',
+      'Website hosting and technical service providers.',
+      'Analytics, advertising, and measurement providers.',
+      'Professional advisers such as accountants or legal advisers.',
+      'Authorities where required by law.',
+    ],
+  },
+  {
+    heading: '7. Data retention',
+    paragraphs: [
+      'We keep personal information only as long as needed for the purposes described in this Privacy Policy, including product access, customer support, business records, tax records, legal compliance, and dispute prevention.',
+      'When information is no longer needed, we delete it or anonymise it where reasonably possible.',
+    ],
+  },
+  {
+    heading: '8. Your privacy rights',
+    paragraphs: ['Depending on your location and applicable law, you may have the right to:'],
+    bullets: [
+      'Request access to your personal information.',
+      'Request correction of inaccurate information.',
+      'Request deletion of your information.',
+      'Request restriction of processing.',
+      'Object to certain processing.',
+      'Request data portability.',
+      'Withdraw consent where processing is based on consent.',
+      'Lodge a complaint with a data protection authority.',
+    ],
+    afterBullets: ['To make a privacy request, contact us using the contact details on the website.'],
+  },
+  {
+    heading: '9. Security',
+    paragraphs: ['We use reasonable technical and organisational measures to protect personal information. However, no website, payment system, or internet transmission is completely secure.'],
+  },
+  {
+    heading: '10. Children',
+    paragraphs: ['SatsOra is not intended for children. We do not knowingly collect personal information from children.'],
+  },
+  {
+    heading: '11. Changes to this Privacy Policy',
+    paragraphs: ['We may update this Privacy Policy from time to time. The updated version will be posted on this page with a new “Last updated” date.'],
+  },
+  {
+    heading: '12. Contact',
+    paragraphs: ['For privacy questions or requests, contact SatsOra through the contact details provided on satsora.com.'],
+  },
+];
+
+const refundPolicyIntro = [
+  'SatsOra is a digital subscription product that provides manual invite-only access to a private TradingView indicator. There is no physical product to return.',
+  'This Refund Policy explains when refunds may be available and how subscription cancellations work.',
+];
+
+const refundPolicySections = [
+  {
+    heading: '1. Product type',
+    paragraphs: [
+      'SatsOra provides access to a private TradingView indicator for educational and informational purposes only.',
+      'SatsOra does not provide financial advice, investment advice, trading advice, brokerage services, account management, or trade execution. SatsOra does not guarantee profits, trading results, market performance, or specific outcomes.',
+    ],
+  },
+  {
+    heading: '2. Before access is activated',
+    paragraphs: [
+      'If you purchase SatsOra access and request a refund before your TradingView access has been manually activated, you may request a full refund.',
+      'To request a refund before activation, contact us as soon as possible and include:',
+    ],
+    bullets: [
+      'The email used for purchase.',
+      'Your order or receipt number.',
+      'Your TradingView username, if already provided.',
+    ],
+  },
+  {
+    heading: '3. After access is activated',
+    paragraphs: [
+      'Once invite-only TradingView access has been manually activated, the digital service has started.',
+      'After access has been activated, payments are generally non-refundable for the current billing period, except where required by applicable law or where we are unable to provide the purchased access.',
+      'Refunds are not provided because of:',
+    ],
+    bullets: [
+      'Trading losses or market performance.',
+      'A change of mind after access has been activated.',
+      'Not using the product after activation.',
+      'Not understanding TradingView.',
+      'Personal device, browser, internet, or TradingView account issues outside our control.',
+      'Disagreement with historical examples, signal timing, or market behaviour.',
+      'Expecting guaranteed profit or guaranteed results.',
+    ],
+  },
+  {
+    heading: '4. Subscription cancellation',
+    paragraphs: [
+      'You may cancel your subscription to stop future renewals.',
+      'Cancelling a subscription stops future billing but does not automatically refund the current paid period.',
+      'Access may remain active until the end of the paid billing period unless a refund is issued or access is removed for policy reasons.',
+    ],
+  },
+  {
+    heading: '5. Monthly access',
+    paragraphs: [
+      'Monthly access is billed for the selected monthly period.',
+      'After access has been activated, the current monthly period is generally non-refundable. You may cancel before the next renewal to avoid future charges.',
+    ],
+  },
+  {
+    heading: '6. Yearly access',
+    paragraphs: [
+      'Yearly access is billed for the selected yearly period at the discounted early access price.',
+      'After access has been activated, the yearly payment is generally non-refundable, except where required by applicable law or where we are unable to provide the purchased access.',
+    ],
+  },
+  {
+    heading: '7. Duplicate payments and payment errors',
+    paragraphs: ['If you believe you were charged twice by mistake, contact us with your order details. Verified duplicate payments or clear payment errors will be reviewed and refunded where appropriate.'],
+  },
+  {
+    heading: '8. Failure to activate access',
+    paragraphs: [
+      'SatsOra access is added manually, usually within 24 hours after payment and after the correct TradingView username has been provided.',
+      'If we cannot activate your access within a reasonable time after receiving the correct TradingView username, you may request a refund.',
+    ],
+  },
+  {
+    heading: '9. Legal withdrawal rights',
+    paragraphs: [
+      'Where applicable law gives you a mandatory right of withdrawal or refund, we will respect that law.',
+      'For digital content or digital services, withdrawal rights may be affected once access has started, especially when immediate access has been requested or digital delivery has begun.',
+    ],
+  },
+  {
+    heading: '10. How to request a refund',
+    paragraphs: ['To request a refund, contact us through the contact details provided on satsora.com and include:'],
+    bullets: [
+      'Purchase email.',
+      'Order or receipt number.',
+      'TradingView username.',
+      'Reason for the request.',
+    ],
+    afterBullets: ['We aim to review refund requests within 5 business days.'],
+  },
+  {
+    heading: '11. Access removal after refund',
+    paragraphs: ['If a refund is issued, SatsOra may remove TradingView access to the private indicator.'],
+  },
+  {
+    heading: '12. Chargebacks and disputes',
+    paragraphs: ['Please contact us before opening a payment dispute. Most access, billing, and username issues can be resolved faster by support.'],
+  },
+  {
+    heading: '13. Policy changes',
+    paragraphs: ['We may update this Refund Policy from time to time. The updated version will be posted on this page with a new “Last updated” date.'],
+  },
+];
+
+function LegalSection({ heading, paragraphs = [], bullets = [], afterBullets = [] }) {
+  return (
+    <section className="legalSection">
+      <h2>{heading}</h2>
+      {paragraphs.map((paragraph) => (
+        <p key={paragraph}>{paragraph}</p>
+      ))}
+      {bullets.length > 0 && (
+        <ul className="legalList">
+          {bullets.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      )}
+      {afterBullets.map((paragraph) => (
+        <p key={paragraph}>{paragraph}</p>
+      ))}
+    </section>
+  );
+}
+
+function LegalPage({ title, lastUpdated, intro, sections }) {
+  return (
+    <>
+      <header className="siteHeader">
+        <nav className="nav legalNav" aria-label="Legal navigation">
+          <a className="logo headerLogo" href="/" aria-label="SatsOra home">
+            <img className="headerLogoIcon" src={satsoraLogo} alt="" width="32" height="32" />
+            <span className="headerLogoText">
+              <strong>SatsOra</strong>
+              <small>BTC-first TradingView signals</small>
+            </span>
+          </a>
+          <a className="legalBackLink" href="/">Back to Home</a>
+        </nav>
+      </header>
+      <main className="legalPage">
+        <div className="legalWrap">
+          <p className="eyebrow">{title}</p>
+          <h1 className="legalTitle">{title}</h1>
+          <p className="legalUpdated">{lastUpdated}</p>
+          <article className="legalCard">
+            {intro.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+            {sections.map((section) => (
+              <LegalSection key={section.heading} {...section} />
+            ))}
+          </article>
+          <div className="legalBackRow">
+            <a className="legalBackLink" href="/">Back to Home</a>
+          </div>
+        </div>
+      </main>
+    </>
+  );
+}
+
 const includedItems = [
   'Private invite-only TradingView indicator access',
   'BTC-first weekly signal logic built around 1W',
@@ -300,7 +573,7 @@ function handlePayhipCheckout(url, event) {
   window.location.href = url;
 }
 
-function App() {
+function HomePage() {
   const [selectedImage, setSelectedImage] = useState(null);
   const mailto = `mailto:${links.email}?subject=SatsOra%20TradingView%20Access%20Request&body=Name:%0AEmail:%0ATradingView%20username:%0APayment%20method:%0APayhip%20order%20email%20or%20crypto%20transaction%20hash:%0AMessage:`;
   const openScreenshot = (screenshot) => setSelectedImage(screenshot);
@@ -738,14 +1011,44 @@ function App() {
         <nav aria-label="Footer navigation">
           <a href={`mailto:${links.email}`}>Contact: {links.email}</a>
           <a href="#crypto-payment">Terms of Access</a>
-          <a href="#crypto-payment">Privacy Policy</a>
-          <a href="#crypto-payment">Refund Policy</a>
+          <a href="/privacy-policy">Privacy Policy</a>
+          <a href="/refund-policy">Refund Policy</a>
           <span>Not affiliated with TradingView</span>
         </nav>
       </footer>
       <ScreenshotLightbox selectedImage={selectedImage} onClose={closeScreenshot} />
     </>
   );
+}
+
+function App() {
+  const pathname = typeof window === 'undefined'
+    ? '/'
+    : window.location.pathname.replace(/\/index\.html$/, '').replace(/\/+$/, '') || '/';
+
+  if (pathname === '/privacy-policy') {
+    return (
+      <LegalPage
+        title="Privacy Policy"
+        lastUpdated="Last updated: 4 June 2026"
+        intro={privacyPolicyIntro}
+        sections={privacyPolicySections}
+      />
+    );
+  }
+
+  if (pathname === '/refund-policy') {
+    return (
+      <LegalPage
+        title="Refund Policy"
+        lastUpdated="Last updated: 4 June 2026"
+        intro={refundPolicyIntro}
+        sections={refundPolicySections}
+      />
+    );
+  }
+
+  return <HomePage />;
 }
 
 export default App;
