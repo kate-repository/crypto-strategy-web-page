@@ -328,7 +328,7 @@ function App() {
             <p className="eyebrow">PRIVATE BTC-FIRST TRADINGVIEW INDICATOR</p>
             <h1><span className="headlinePrimary">Bitcoin BUY/SELL</span><span className="headlineLine">Signals on TradingView</span></h1>
             <p className="heroLead">
-              Clear BTC weekly BUY and SELL labels shown directly on the TradingView chart.
+              Stop chasing every candle. SatsOra highlights Bitcoin’s major weekly trend shifts directly on your chart, helping BTC traders cut noise, follow the bigger move, and stay disciplined when the market gets emotional.
             </p>
             <div className="buttonRow">
               <Button href={payhipMonthlyUrl} onClick={(event) => handlePayhipCheckout(payhipMonthlyUrl, event)}>Get SatsOra Access</Button>
