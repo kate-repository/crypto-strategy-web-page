@@ -96,15 +96,9 @@ h3 {
 
 h1 {
   max-width: 670px;
-  font-size: clamp(3rem, 3.7vw, 3.5rem);
+  font-size: clamp(2.85rem, 3.7vw, 3.6rem);
   line-height: 1.02;
-  letter-spacing: -0.045em;
-}
-
-.headlinePrimary,
-.headlineLine {
-  display: block;
-  white-space: nowrap;
+  letter-spacing: 0;
 }
 
 h2 {
@@ -278,7 +272,7 @@ form button:hover,
 
 .section {
   position: relative;
-  padding: 84px 0;
+  padding: 76px 0;
 }
 
 .band {
@@ -298,8 +292,8 @@ form button:hover,
   align-items: center;
   gap: 40px;
   min-height: auto;
-  padding-top: 48px;
-  padding-bottom: 38px;
+  padding-top: 54px;
+  padding-bottom: 52px;
 }
 
 .heroCopy > p:not(.eyebrow):not(.riskLine) {
@@ -400,6 +394,13 @@ form button:hover,
   margin: 0;
   color: #dfe4eb;
   font-size: 0.92rem;
+}
+
+.sectionLead {
+  max-width: 850px;
+  margin: -14px 0 26px;
+  color: #d4dbe5;
+  font-size: 1.04rem;
 }
 
 .card,
@@ -554,8 +555,8 @@ details,
 }
 
 .historicalResults {
-  margin-top: 36px;
-  padding: 72px 32px;
+  margin-top: 18px;
+  padding: 66px 32px;
   border: 1px solid rgba(247, 147, 26, 0.22);
   border-radius: 18px;
   background:
@@ -594,13 +595,13 @@ details,
 
 .historicalMetricsGrid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 14px;
 }
 
 .historicalMetric {
   display: grid;
-  min-height: 166px;
+  min-height: 146px;
   align-content: center;
   gap: 9px;
   padding: 22px;
@@ -622,9 +623,9 @@ details,
 
 .historicalMetric strong {
   color: var(--green);
-  font-size: clamp(2.15rem, 4vw, 3.3rem);
+  font-size: clamp(1.9rem, 3.2vw, 2.8rem);
   line-height: 1;
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
 }
 
 .historicalMetric.neutral strong {
@@ -738,6 +739,31 @@ details,
   margin: 18px 0 0;
 }
 
+.subtleRisk {
+  margin: 20px 0;
+  color: #e7c696;
+}
+
+.comparisonSection {
+  padding-top: 58px;
+}
+
+.comparisonLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.comparisonLayout .comparisonCard,
+.comparisonLayout .historicalAssumptions {
+  margin: 0;
+}
+
+.compactAssumptions ul {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .sectionHeader {
   max-width: 930px;
   margin-bottom: 30px;
@@ -823,18 +849,15 @@ details,
 }
 
 .proofCard {
-  position: relative;
-  min-height: 170px;
-  padding-top: 58px;
+  min-height: 156px;
 }
 
 .proofCard::before {
   content: "";
-  position: absolute;
-  top: 24px;
-  left: 22px;
+  display: block;
   width: 24px;
-  height: 3px;
+  height: 2px;
+  margin-bottom: 12px;
   border-radius: 999px;
   background: linear-gradient(90deg, var(--orange), var(--gold));
   box-shadow: 0 0 20px rgba(247, 147, 26, 0.7);
@@ -952,6 +975,17 @@ details,
   columns: 2;
   column-gap: 52px;
   max-width: 980px;
+}
+
+.includedPanel {
+  max-width: 1040px;
+  padding: 26px;
+  border: 1px solid rgba(247, 147, 26, 0.22);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(145deg, rgba(247, 147, 26, 0.06), rgba(255, 255, 255, 0.012)),
+    rgba(13, 17, 21, 0.78);
+  box-shadow: var(--shadow);
 }
 
 .screenshotFigure {
@@ -1213,10 +1247,10 @@ tr:last-child td {
 .price {
   margin: 18px 0 8px;
   color: var(--text);
-  font-size: clamp(2.1rem, 4vw, 3.4rem);
+  font-size: clamp(2rem, 3.25vw, 3rem);
   font-weight: 900;
   line-height: 1;
-  letter-spacing: -0.05em;
+  letter-spacing: 0;
 }
 
 .pricingDescription {
@@ -1238,8 +1272,8 @@ tr:last-child td {
 }
 
 .foundersPricing {
-  margin-top: 36px;
-  padding: 72px 32px;
+  margin-top: 18px;
+  padding: 66px 32px;
   border: 1px solid rgba(247, 147, 26, 0.27);
   border-radius: 18px;
   background:
@@ -1336,6 +1370,14 @@ tr:last-child td {
   align-items: flex-start;
 }
 
+.paymentCard .button {
+  margin-top: auto;
+}
+
+.cryptoRequestCard {
+  max-width: 860px;
+}
+
 .trustList {
   display: grid;
   align-content: center;
@@ -1397,6 +1439,14 @@ tr:last-child td {
   font-weight: 800;
 }
 
+.inlineTextLink {
+  color: var(--gold);
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 181, 71, 0.45);
+  text-underline-offset: 3px;
+}
+
 .accessFormCard {
   margin-top: 22px;
   background: var(--panel-strong);
@@ -1407,6 +1457,10 @@ form {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
   margin-top: 22px;
+}
+
+.honeypotField {
+  display: none;
 }
 
 label {
@@ -1430,8 +1484,33 @@ textarea {
 }
 
 textarea,
-form button {
+form button,
+.formStatus {
   grid-column: 1 / -1;
+}
+
+form button:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
+.formStatus {
+  min-height: 24px;
+  margin: 0;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.formStatus.success {
+  color: #73e2a7;
+}
+
+.formStatus.error {
+  color: #ffb7a6;
+}
+
+.formStatus a {
+  color: var(--gold);
 }
 
 details {
@@ -1458,8 +1537,8 @@ summary {
 }
 
 .finalCta {
-  padding-top: 70px;
-  padding-bottom: 70px;
+  padding-top: 68px;
+  padding-bottom: 68px;
   text-align: center;
 }
 
@@ -1492,8 +1571,7 @@ summary {
 }
 
 #what-you-get,
-#get-access,
-#alerts,
+#payment-method,
 #faq {
   padding-top: 76px;
   padding-bottom: 76px;
@@ -1505,11 +1583,6 @@ summary {
 
 #pricing {
   padding-top: 80px;
-  padding-bottom: 78px;
-}
-
-#crypto-payment {
-  padding-top: 78px;
   padding-bottom: 78px;
 }
 
@@ -1705,6 +1778,7 @@ summary {
 
   .hero,
   .split,
+  .comparisonLayout,
   .resultsLayout,
   .assumptionsBox,
   .inviteLayout,
@@ -1764,11 +1838,9 @@ summary {
   }
 
   #what-you-get,
-  #get-access,
-  #alerts,
+  #payment-method,
   #faq,
   #pricing,
-  #crypto-payment,
   .finalCta {
     padding-top: 56px;
     padding-bottom: 56px;
@@ -1788,14 +1860,15 @@ summary {
   h1 {
     font-size: clamp(1.65rem, 7.7vw, 3.5rem);
     line-height: 1.02;
-    letter-spacing: -0.055em;
+    letter-spacing: 0;
   }
 
   .heroFeatureGrid,
   .proofGrid,
   .historicalMetricsGrid,
   .historicalAssumptions ul,
-  .positioningCards {
+  .positioningCards,
+  .compactAssumptions ul {
     grid-template-columns: 1fr;
   }
 
@@ -1954,7 +2027,8 @@ summary {
   }
 
   textarea,
-  form button {
+  form button,
+  .formStatus {
     grid-column: auto;
   }
 

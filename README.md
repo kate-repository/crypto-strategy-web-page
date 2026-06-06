@@ -31,16 +31,13 @@ npm run build
 
 ## Edit Placeholder Values
 
-Replace wallet, contact, and website placeholders in:
+Replace contact, pricing, and website details in:
 
-- `src/App.jsx` for email, wallet table values, page copy, pricing, and screenshot placeholder labels.
+- `src/App.jsx` for email, page copy, pricing, checkout links, and screenshot labels.
 - `index.html` for SEO title, meta description, canonical URL, Open Graph tags, Twitter card tags, and JSON-LD structured data.
 - `public/robots.txt` and `public/sitemap.xml` for the final website URL.
 
 Remaining placeholders:
-- `USDT_WALLET_ADDRESS_HERE`
-- `USDC_WALLET_ADDRESS_HERE`
-- `BTC_WALLET_ADDRESS_HERE`
 - `WEBSITE_URL_HERE`
 
 Contact email is set to `info@satsora.com`.
