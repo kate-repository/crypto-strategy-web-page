@@ -114,6 +114,13 @@ h3 {
   font-size: 1.18rem;
 }
 
+h4 {
+  margin: 0;
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
 code {
   color: var(--gold);
   white-space: normal;
@@ -1374,8 +1381,163 @@ tr:last-child td {
   margin-top: auto;
 }
 
+.cryptoPanel {
+  margin-top: 24px;
+  padding: 26px;
+  border: 1px solid rgba(247, 147, 26, 0.3);
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 86% 0%, rgba(247, 147, 26, 0.16), transparent 24rem),
+    linear-gradient(155deg, rgba(255, 181, 71, 0.055), rgba(255, 255, 255, 0.012)),
+    rgba(9, 12, 15, 0.9);
+  box-shadow: 0 24px 72px rgba(0, 0, 0, 0.32);
+}
+
+.cryptoPanelHeader {
+  max-width: 900px;
+}
+
+.cryptoPanelHeader h3 {
+  font-size: clamp(1.65rem, 2.3vw, 2.35rem);
+}
+
+.cryptoPanelHeader p:last-child {
+  margin-bottom: 0;
+}
+
+.cryptoWarningBox {
+  display: grid;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 16px;
+  border: 1px solid rgba(247, 147, 26, 0.4);
+  border-radius: var(--radius);
+  background: rgba(247, 147, 26, 0.085);
+  color: #f2d4aa;
+}
+
+.cryptoWarningBox strong {
+  color: #ffd18b;
+}
+
+.cryptoWarningBox span {
+  color: #e6c99d;
+  line-height: 1.55;
+}
+
+.cryptoSubsection {
+  margin-top: 26px;
+}
+
+.cryptoSubsection > h4 {
+  margin-bottom: 14px;
+}
+
+.acceptedCryptoGrid,
+.cryptoQrGrid,
+.paymentAmountGrid,
+.cryptoStepsGrid {
+  display: grid;
+  gap: 14px;
+}
+
+.acceptedCryptoGrid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.acceptedCryptoGrid article,
+.paymentAmountGrid div {
+  display: grid;
+  gap: 6px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius);
+  background: rgba(10, 15, 22, 0.74);
+}
+
+.acceptedCryptoGrid strong,
+.paymentAmountGrid strong {
+  color: var(--gold);
+  font-size: 1.05rem;
+}
+
+.acceptedCryptoGrid span,
+.paymentAmountGrid span {
+  color: #d7dee8;
+  line-height: 1.45;
+}
+
+.cryptoQrGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.cryptoQrCard {
+  display: grid;
+  gap: 12px;
+  padding: 20px;
+  border: 1px solid rgba(247, 147, 26, 0.26);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(145deg, rgba(247, 147, 26, 0.065), rgba(255, 255, 255, 0.014)),
+    rgba(13, 17, 21, 0.86);
+}
+
+.cryptoQrCard p {
+  margin: 0;
+}
+
+.cryptoQrFrame {
+  display: grid;
+  min-height: 360px;
+  padding: 18px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  background: #f6f2e8;
+}
+
+.cryptoQrFrame img {
+  width: min(100%, 460px);
+  max-height: 520px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.cryptoCardWarning {
+  padding: 12px;
+  border-left: 3px solid var(--orange);
+  background: rgba(247, 147, 26, 0.07);
+  color: #f0c98d;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.paymentAmountBox {
+  padding: 18px;
+  border: 1px solid rgba(247, 147, 26, 0.22);
+  border-radius: var(--radius);
+  background: rgba(10, 15, 22, 0.58);
+}
+
+.paymentAmountGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.paymentAmountBox p {
+  max-width: 900px;
+  margin-bottom: 0;
+}
+
+.cryptoStepsGrid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.cryptoStepsGrid .stepCard h4 {
+  font-size: 1rem;
+}
+
 .cryptoRequestCard {
-  max-width: 860px;
+  margin-top: 26px;
 }
 
 .trustList {
@@ -1785,9 +1947,16 @@ summary {
   .historicalEvidenceGrid,
   .pricingGrid,
   .paymentGrid,
+  .cryptoQrGrid,
+  .paymentAmountGrid,
   .alertGrid,
   .statsGrid {
     grid-template-columns: 1fr;
+  }
+
+  .acceptedCryptoGrid,
+  .cryptoStepsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .heroFeatureGrid {
@@ -2015,8 +2184,29 @@ summary {
   .fourGrid,
   .screenshotGrid,
   .stepGrid,
+  .acceptedCryptoGrid,
+  .cryptoStepsGrid,
   form {
     grid-template-columns: 1fr;
+  }
+
+  .cryptoPanel {
+    padding: 20px 16px;
+    border-radius: 14px;
+  }
+
+  .cryptoQrCard {
+    padding: 16px;
+  }
+
+  .cryptoQrFrame {
+    min-height: 0;
+    padding: 12px;
+  }
+
+  .cryptoQrFrame img {
+    width: 100%;
+    max-height: none;
   }
 
   .containScreenshot .screenshotFrame,

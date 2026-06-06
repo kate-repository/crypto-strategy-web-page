@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react';
 import btcStrategyTester from './resources/BTC strategy tester.png';
+import btcAddressQr from './resources/btc-address.jpg';
 import closerChart from './resources/closer-chart2.png';
+import ethAddressQr from './resources/eth-address.jpg';
 import satsoraLogo from './resources/satsora-logo.png';
 
 const links = {
   email: 'info@satsora.com',
 };
 
-const accessRequestSubject = 'SatsOra Access Request';
+const accessRequestSubject = 'SatsOra crypto payment / access request';
 const accessRequestEndpoint = `https://formsubmit.co/ajax/${links.email}`;
 
 const navItems = [
@@ -91,6 +93,37 @@ const includedItems = [
   'Backtest assumptions explained',
   'Future indicator updates while subscribed',
   'Manual access support after payment',
+];
+
+const acceptedCryptoPayments = [
+  ['BTC', 'Bitcoin network only'],
+  ['ETH', 'Ethereum network only'],
+  ['USDT', 'Ethereum network only / ERC-20'],
+  ['USDC', 'Ethereum network only / ERC-20'],
+];
+
+const cryptoPaymentCards = [
+  {
+    title: 'Bitcoin payment',
+    text: 'Use this QR code only for BTC sent on the Bitcoin network.',
+    image: btcAddressQr,
+    alt: 'Bitcoin payment QR code and address for SatsOra',
+    warning: 'Send BTC only on the Bitcoin network.',
+  },
+  {
+    title: 'Ethereum / ERC-20 payment',
+    text: 'Use this QR code for ETH, USDT, or USDC sent on the Ethereum network. USDT and USDC must be sent as ERC-20 tokens.',
+    image: ethAddressQr,
+    alt: 'Ethereum payment QR code and address for SatsOra',
+    warning: 'Send ETH, USDT, or USDC only on the Ethereum network. USDT and USDC must be ERC-20 tokens.',
+  },
+];
+
+const cryptoPaymentSteps = [
+  ['Choose your plan', 'Select Monthly Access or Yearly Access.'],
+  ['Send payment', 'Use only one of the displayed QR/payment addresses and the correct network.'],
+  ['Submit your details', 'Send your TradingView username, email, selected plan, payment currency, and transaction hash.'],
+  ['Receive TradingView access', 'Access is granted manually within a maximum of 24 hours after payment confirmation and receipt of your TradingView username.'],
 ];
 
 const riskDisclaimer = 'Educational tool only. SatsOra does not provide financial advice. Crypto trading involves risk, and historical performance does not guarantee future results.';
@@ -558,11 +591,12 @@ function handlePayhipCheckout(url, event) {
 
 function getAccessRequestMailto(formData = new FormData()) {
   const body = [
-    ['Request type', formData.get('Request type')],
     ['Name', formData.get('Name')],
     ['Email', formData.get('email')],
     ['TradingView username', formData.get('TradingView username')],
-    ['Payment details', formData.get('Payment details')],
+    ['Selected plan', formData.get('Selected plan')],
+    ['Payment currency', formData.get('Payment currency')],
+    ['Transaction hash', formData.get('Transaction hash')],
     ['Message', formData.get('Message')],
   ]
     .map(([label, value]) => `${label}: ${value || ''}`)
@@ -575,7 +609,9 @@ function HomePage() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [accessFormStatus, setAccessFormStatus] = useState({ type: 'idle', message: '' });
   const [accessRequestMailto, setAccessRequestMailto] = useState(getAccessRequestMailto());
-  const [cryptoRequestOpen, setCryptoRequestOpen] = useState(false);
+  const [cryptoRequestOpen, setCryptoRequestOpen] = useState(() => (
+    typeof window !== 'undefined' && window.location.hash === '#crypto-request'
+  ));
   const openScreenshot = (screenshot) => setSelectedImage(screenshot);
   const closeScreenshot = () => setSelectedImage(null);
   const handleAccessRequestSubmit = async (event) => {
@@ -616,7 +652,7 @@ function HomePage() {
       setAccessRequestMailto(getAccessRequestMailto());
       setAccessFormStatus({
         type: 'success',
-        message: 'Request sent. We will reply with the next steps.',
+        message: 'Your crypto payment details have been prepared. After sending payment, make sure your transaction hash and TradingView username are sent to info@satsora.com. Access is granted manually within a maximum of 24 hours after payment confirmation.',
       });
     } catch (error) {
       console.error(error);
@@ -869,26 +905,98 @@ function HomePage() {
             </article>
           </div>
           {cryptoRequestOpen && (
-            <article className="accessFormCard cryptoRequestCard" id="crypto-request">
-              <h3>Request crypto payment details</h3>
-              <p className="formHelper">Send your request and we will reply with current payment details. Wallet addresses are not published on the homepage.</p>
-              <form onSubmit={handleAccessRequestSubmit}>
-                <input type="hidden" name="Request type" value="Crypto payment details" />
-                <input className="honeypotField" name="_honey" tabIndex={-1} autoComplete="off" aria-hidden="true" />
-                <label>Name<input name="Name" autoComplete="name" /></label>
-                <label>Email<input name="email" type="email" autoComplete="email" required /></label>
-                <label>TradingView username<input name="TradingView username" autoComplete="off" /></label>
-                <label>Message<textarea name="Message" rows="4" placeholder="Monthly or yearly access, preferred crypto network, or any access question."></textarea></label>
-                <button type="submit" disabled={accessFormStatus.type === 'submitting'}>
-                  {accessFormStatus.type === 'submitting' ? 'Sending...' : 'Request Crypto Payment Details'}
-                </button>
-                <p className={`formStatus ${accessFormStatus.type}`} role="status" aria-live="polite">
-                  {accessFormStatus.message}
-                  {accessFormStatus.type === 'error' && (
-                    <> <a href={accessRequestMailto}>Email {links.email}</a></>
-                  )}
+            <article className="cryptoPanel" id="crypto-request">
+              <div className="cryptoPanelHeader">
+                <p className="eyebrow">Manual crypto payment</p>
+                <h3>Crypto payment instructions</h3>
+                <p>
+                  Manual crypto payments are available in BTC, ETH, USDT, and USDC. Please check the currency, network, and address carefully before sending. Crypto payments are irreversible and payments sent to the wrong address or wrong network may not be recoverable.
                 </p>
-              </form>
+              </div>
+
+              <div className="cryptoWarningBox">
+                <strong>Important:</strong>
+                <span>BTC is accepted only on the Bitcoin network. ETH, USDT, and USDC are accepted only through the Ethereum network. USDT and USDC must be sent as ERC-20 tokens. Use only the network stated for each payment card.</span>
+              </div>
+
+              <section className="cryptoSubsection" aria-labelledby="accepted-crypto-payments">
+                <h4 id="accepted-crypto-payments">Accepted crypto payments</h4>
+                <div className="acceptedCryptoGrid">
+                  {acceptedCryptoPayments.map(([currency, network]) => (
+                    <article key={currency}>
+                      <strong>{currency}</strong>
+                      <span>{network}</span>
+                    </article>
+                  ))}
+                </div>
+              </section>
+
+              <section className="cryptoSubsection" aria-label="Crypto QR payment cards">
+                <div className="cryptoQrGrid">
+                  {cryptoPaymentCards.map((card) => (
+                    <article className="cryptoQrCard" key={card.title}>
+                      <h4>{card.title}</h4>
+                      <p>{card.text}</p>
+                      <div className="cryptoQrFrame">
+                        <img src={card.image} alt={card.alt} loading="eager" decoding="sync" />
+                      </div>
+                      <p className="cryptoCardWarning">{card.warning}</p>
+                    </article>
+                  ))}
+                </div>
+              </section>
+
+              <section className="cryptoSubsection paymentAmountBox" aria-labelledby="payment-amount">
+                <h4 id="payment-amount">Payment amount</h4>
+                <div className="paymentAmountGrid">
+                  <div>
+                    <span>Monthly Access:</span>
+                    <strong>€19 equivalent</strong>
+                  </div>
+                  <div>
+                    <span>Yearly Access:</span>
+                    <strong>€149 equivalent</strong>
+                  </div>
+                </div>
+                <p>For crypto payments, send the equivalent amount at the time of payment. Network fees are the buyer's responsibility. Because crypto prices and network fees can change, access is activated after manual payment verification.</p>
+              </section>
+
+              <section className="cryptoSubsection" aria-labelledby="crypto-payment-steps">
+                <h4 id="crypto-payment-steps">Payment steps</h4>
+                <div className="cryptoStepsGrid">
+                  {cryptoPaymentSteps.map(([title, text], index) => (
+                    <article className="stepCard" key={title}>
+                      <span>{index + 1}</span>
+                      <h4>{title}</h4>
+                      <p>{text}</p>
+                    </article>
+                  ))}
+                </div>
+              </section>
+
+              <section className="accessFormCard cryptoRequestCard" aria-labelledby="crypto-access-form">
+                <h4 id="crypto-access-form">Submit crypto payment details</h4>
+                <p className="formHelper">After payment, submit your transaction hash and TradingView username so access can be verified manually. This form sends the details to {links.email}.</p>
+                <form onSubmit={handleAccessRequestSubmit}>
+                  <input className="honeypotField" name="_honey" tabIndex={-1} autoComplete="off" aria-hidden="true" />
+                  <label>Name<input name="Name" autoComplete="name" /></label>
+                  <label>Email<input name="email" type="email" autoComplete="email" required /></label>
+                  <label>TradingView username<input name="TradingView username" autoComplete="off" required /></label>
+                  <label>Selected plan<select name="Selected plan" required><option>Monthly Access</option><option>Yearly Access</option></select></label>
+                  <label>Payment currency<select name="Payment currency" required><option>BTC</option><option>ETH</option><option>USDT ERC-20</option><option>USDC ERC-20</option></select></label>
+                  <label>Transaction hash<input name="Transaction hash" autoComplete="off" required /></label>
+                  <label>Message<textarea name="Message" rows="4"></textarea></label>
+                  <button type="submit" disabled={accessFormStatus.type === 'submitting'}>
+                    {accessFormStatus.type === 'submitting' ? 'Sending...' : 'Submit Crypto Payment Details'}
+                  </button>
+                  <p className={`formStatus ${accessFormStatus.type}`} role="status" aria-live="polite">
+                    {accessFormStatus.message}
+                    {accessFormStatus.type === 'error' && (
+                      <> <a href={accessRequestMailto}>Email {links.email}</a></>
+                    )}
+                  </p>
+                </form>
+              </section>
             </article>
           )}
         </section>
