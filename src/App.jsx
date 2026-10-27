@@ -1,16 +1,11 @@
 import { useEffect, useState } from 'react';
 import btcStrategyTester from './resources/BTC strategy tester.png';
-import btcAddressQr from './resources/btc-address.jpg';
 import closerChart from './resources/closer-chart2.png';
-import ethAddressQr from './resources/eth-address.jpg';
 import satsoraLogo from './resources/satsora-logo.png';
 
 const links = {
   email: 'info@satsora.com',
 };
-
-const accessRequestSubject = 'SatsOra crypto payment / access request';
-const accessRequestEndpoint = `https://formsubmit.co/ajax/${links.email}`;
 
 const navItems = [
   ['Results', '#historical-results'],
@@ -75,13 +70,13 @@ const notForItems = [
 ];
 
 const accessSteps = [
-  ['Purchase access', 'Choose monthly or yearly access.'],
-  ['Enter your TradingView username', 'This is required to activate the private TradingView script.'],
+  ['Request access by email', 'Choose a plan and email us your TradingView username.'],
+  ['Receive approval and pay', 'Wait for email approval and manual payment instructions, then reply with your payment reference.'],
   ['Manual invite-only activation', 'Access is reviewed and added personally.'],
   ['Use SatsOra on TradingView', 'Add SatsOra to your chart and configure alerts.'],
 ];
 
-const accessTimingText = 'Access is granted manually within a maximum of 24 hours after payment and receipt of your TradingView username.';
+const accessTimingText = 'Access is granted manually within 24 hours after payment verification, approval, and receipt of your TradingView username.';
 
 const includedItems = [
   'Private invite-only TradingView indicator access',
@@ -95,41 +90,10 @@ const includedItems = [
   'Manual access support after payment',
 ];
 
-const acceptedCryptoPayments = [
-  ['BTC', 'Bitcoin network only'],
-  ['ETH', 'Ethereum network only'],
-  ['USDT', 'Ethereum network only / ERC-20'],
-  ['USDC', 'Ethereum network only / ERC-20'],
-];
-
-const cryptoPaymentCards = [
-  {
-    title: 'Bitcoin payment',
-    text: 'Use this QR code only for BTC sent on the Bitcoin network.',
-    image: btcAddressQr,
-    alt: 'Bitcoin payment QR code and address for SatsOra',
-    warning: 'Send BTC only on the Bitcoin network.',
-  },
-  {
-    title: 'Ethereum / ERC-20 payment',
-    text: 'Use this QR code for ETH, USDT, or USDC sent on the Ethereum network. USDT and USDC must be sent as ERC-20 tokens.',
-    image: ethAddressQr,
-    alt: 'Ethereum payment QR code and address for SatsOra',
-    warning: 'Send ETH, USDT, or USDC only on the Ethereum network. USDT and USDC must be ERC-20 tokens.',
-  },
-];
-
-const cryptoPaymentSteps = [
-  ['Choose your plan', 'Select Monthly Access or Yearly Access.'],
-  ['Send payment', 'Use only one of the displayed QR/payment addresses and the correct network.'],
-  ['Submit your details', 'Send your TradingView username, email, selected plan, payment currency, and transaction hash.'],
-  ['Receive TradingView access', 'Access is granted manually within a maximum of 24 hours after payment confirmation and receipt of your TradingView username.'],
-];
-
 const riskDisclaimer = 'Educational tool only. SatsOra does not provide financial advice. Crypto trading involves risk, and historical performance does not guarantee future results.';
 
 const privacyPolicyIntro = [
-  'SatsOra is operated by Sparkbyte Solutions Ltd, Cyprus. This Privacy Policy explains how we collect, use, and protect personal information when you visit satsora.com, request access, purchase SatsOra access, or contact us.',
+  'This Privacy Policy explains how we collect, use, and protect personal information when you visit satsora.com, request access, purchase SatsOra access, or contact us.',
   'SatsOra is a private TradingView indicator access service. It is educational software and does not provide financial advice, investment advice, brokerage services, or trade execution.',
 ];
 
@@ -140,7 +104,7 @@ const privacyPolicySections = [
     bullets: [
       'Name and email address when you contact us, request access, or complete a purchase.',
       'TradingView username when needed to manually activate invite-only access.',
-      'Payment and billing information processed through Payhip and its payment providers.',
+      'Payment references and billing information you provide by email for manual payment verification.',
       'Order information, subscription status, and purchase history.',
       'Messages you send to us for support or access requests.',
       'Basic website and technical data such as browser type, device type, pages visited, referral source, and approximate location where analytics or advertising measurement tools are used.',
@@ -173,7 +137,7 @@ const privacyPolicySections = [
   {
     heading: '4. Payments and third-party services',
     paragraphs: [
-      'Payments are processed through Payhip and its payment providers. These providers may collect and process payment, billing, tax, and fraud-prevention information according to their own privacy policies.',
+      'Payment is arranged manually by email after your request is approved. We use the information and payment references you provide to verify payment and activate access. Any payment service agreed by email processes information under its own privacy policy.',
       'SatsOra may also rely on third-party services for hosting, analytics, advertising measurement, email communication, and customer support.',
       'TradingView access requires a TradingView username. Your use of TradingView is subject to TradingView’s own terms and privacy policy.',
     ],
@@ -182,14 +146,14 @@ const privacyPolicySections = [
     heading: '5. Cookies and analytics',
     paragraphs: [
       'The website may use essential cookies and similar technologies needed for website functionality, payment flow, security, analytics, and advertising measurement.',
-      'You can control cookies through your browser settings. Blocking some cookies may affect website functionality or checkout tracking.',
+      'You can control cookies through your browser settings. Blocking some cookies may affect website functionality or request processing.',
     ],
   },
   {
     heading: '6. Sharing of information',
     paragraphs: ['We do not sell your personal information.', 'We may share information only when necessary with:'],
     bullets: [
-      'Payment processors and checkout providers.',
+      'Payment service providers used for the payment method agreed by email.',
       'Website hosting and technical service providers.',
       'Analytics, advertising, and measurement providers.',
       'Professional advisers such as accountants or legal advisers.',
@@ -282,7 +246,7 @@ const refundPolicySections = [
     heading: '4. Subscription cancellation',
     paragraphs: [
       'You may cancel your subscription to stop future renewals.',
-      'Cancelling a subscription stops future billing but does not automatically refund the current paid period.',
+      'Cancelling future access does not automatically refund the current paid period. Renewals are arranged manually by email.',
       'Access may remain active until the end of the paid billing period unless a refund is issued or access is removed for policy reasons.',
     ],
   },
@@ -344,7 +308,7 @@ const refundPolicySections = [
 ];
 
 const termsOfAccessIntro = [
-  'These Terms of Access explain the basic conditions for purchasing and using SatsOra, a private invite-only TradingView indicator operated by Sparkbyte Solutions Ltd.',
+  'These Terms of Access explain the basic conditions for purchasing and using SatsOra, a private invite-only TradingView indicator.',
   'By purchasing or requesting access, you acknowledge that SatsOra is educational chart analysis software and does not provide financial advice, brokerage services, account management, or trade execution.',
 ];
 
@@ -380,15 +344,15 @@ const termsOfAccessSections = [
   {
     heading: '5. Account responsibility',
     paragraphs: [
-      'You are responsible for maintaining access to your TradingView account and for entering the correct TradingView username during checkout or support communication.',
+      'You are responsible for maintaining access to your TradingView account and for entering the correct TradingView username in your email access request.',
       'SatsOra is independent and is not affiliated with, endorsed by, or sponsored by TradingView.',
     ],
   },
   {
     heading: '6. Payments, renewals, and cancellation',
     paragraphs: [
-      'Subscription checkout payments, renewals, and cancellations are handled through the checkout provider and its payment processors.',
-      'Manual crypto payments, when offered, are irreversible and must be confirmed carefully before sending. Wallet details are provided only through direct request flow.',
+      'Payments and renewals are arranged manually by email after approval. Contact info@satsora.com to request renewal or cancel future access; there is no automatic renewal through this website.',
+      'Wait for approval and payment instructions by email before sending payment. Access is activated only after manual payment verification.',
     ],
   },
   {
@@ -470,12 +434,16 @@ const faqs = [
   ['Do I get the Pine Script source code?', 'No. SatsOra is a private invite-only indicator. The source code and proprietary logic are not included.'],
   ['Can I use it for other crypto markets?', 'SatsOra is BTC-first. You may test it visually on other liquid crypto markets, but the product is positioned around Bitcoin weekly analysis.'],
   ['How do I get access after payment?', accessTimingText],
-  ['Can I cancel?', 'Yes, if using subscription checkout, cancellation should follow the checkout provider’s subscription management process.'],
+  ['Can I cancel?', 'Yes. Email info@satsora.com to cancel future access or request help. Renewals require a new manual payment agreed by email.'],
   ['Do you offer refunds?', 'Digital access is normally non-refundable after activation, unless required by law or stated otherwise in the Refund Policy.'],
 ];
 
-const payhipMonthlyUrl = 'https://payhip.com/order?link=5uOK4&pricing_plan=lKzy6vE5BX';
-const payhipYearlyUrl = 'https://payhip.com/order?link=5uOK4&pricing_plan=V6B73q2pBr';
+const monthlyRequestUrl = `mailto:${links.email}?subject=${encodeURIComponent('SatsOra monthly access request')}&body=${encodeURIComponent(`Hello, I would like Monthly Access (€19 / month).
+TradingView username:
+Please review my request and email approval and manual payment instructions before I pay.`)}`;
+const yearlyRequestUrl = `mailto:${links.email}?subject=${encodeURIComponent('SatsOra yearly access request')}&body=${encodeURIComponent(`Hello, I would like Yearly Access (€149 / year).
+TradingView username:
+Please review my request and email approval and manual payment instructions before I pay.`)}`;
 
 function Button({ href, children, variant = 'primary', onClick }) {
   return (
@@ -578,90 +546,10 @@ function PricingCard({ title, price, label, description, note, cta, href, onClic
   );
 }
 
-function handlePayhipCheckout(url, event) {
-  event.preventDefault();
-
-  if (typeof window.gtag_report_conversion === 'function') {
-    window.gtag_report_conversion(url);
-    return;
-  }
-
-  window.location.href = url;
-}
-
-function getAccessRequestMailto(formData = new FormData()) {
-  const body = [
-    ['Name', formData.get('Name')],
-    ['Email', formData.get('email')],
-    ['TradingView username', formData.get('TradingView username')],
-    ['Selected plan', formData.get('Selected plan')],
-    ['Payment currency', formData.get('Payment currency')],
-    ['Transaction hash', formData.get('Transaction hash')],
-    ['Message', formData.get('Message')],
-  ]
-    .map(([label, value]) => `${label}: ${value || ''}`)
-    .join('\n');
-
-  return `mailto:${links.email}?subject=${encodeURIComponent(accessRequestSubject)}&body=${encodeURIComponent(body)}`;
-}
-
 function HomePage() {
   const [selectedImage, setSelectedImage] = useState(null);
-  const [accessFormStatus, setAccessFormStatus] = useState({ type: 'idle', message: '' });
-  const [accessRequestMailto, setAccessRequestMailto] = useState(getAccessRequestMailto());
-  const [cryptoRequestOpen, setCryptoRequestOpen] = useState(() => (
-    typeof window !== 'undefined' && window.location.hash === '#crypto-request'
-  ));
   const openScreenshot = (screenshot) => setSelectedImage(screenshot);
   const closeScreenshot = () => setSelectedImage(null);
-  const handleAccessRequestSubmit = async (event) => {
-    event.preventDefault();
-
-    const form = event.currentTarget;
-    const formData = new FormData(form);
-    const fallbackMailto = getAccessRequestMailto(formData);
-    setAccessRequestMailto(fallbackMailto);
-
-    if (formData.get('_honey')) {
-      return;
-    }
-
-    const payload = Object.fromEntries(formData.entries());
-    payload._subject = accessRequestSubject;
-    payload._template = 'table';
-    payload._captcha = 'false';
-    payload._url = window.location.href;
-
-    setAccessFormStatus({ type: 'submitting', message: 'Sending access request...' });
-
-    try {
-      const response = await fetch(accessRequestEndpoint, {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload),
-      });
-
-      if (!response.ok) {
-        throw new Error(`Access request failed with status ${response.status}`);
-      }
-
-      form.reset();
-      setAccessRequestMailto(getAccessRequestMailto());
-      setAccessFormStatus({
-        type: 'success',
-        message: 'Your crypto payment details have been prepared. After sending payment, make sure your transaction hash and TradingView username are sent to info@satsora.com. Access is granted manually within a maximum of 24 hours after payment confirmation.',
-      });
-    } catch (error) {
-      console.error(error);
-      setAccessFormStatus({
-        type: 'error',
-        message: 'The automatic email submit failed. Please send the request by email instead.',
-      });
-    }
-  };
 
   return (
     <>
@@ -853,19 +741,17 @@ function HomePage() {
             <PricingCard
               title="Monthly Access"
               price="€19 / month"
-              description="Flexible access to SatsOra with monthly renewal."
-              cta="Start Monthly Access"
-              href={payhipMonthlyUrl}
-              onClick={(event) => handlePayhipCheckout(payhipMonthlyUrl, event)}
+              description="One month of access. Renewal is arranged manually by email."
+              cta="Request Monthly Access"
+              href={monthlyRequestUrl}
             />
             <PricingCard
               title="Yearly Access"
               label="Best value"
               price="€149 / year"
               description="Best value for traders who want longer-term access."
-              cta="Get Yearly Access"
-              href={payhipYearlyUrl}
-              onClick={(event) => handlePayhipCheckout(payhipYearlyUrl, event)}
+              cta="Request Yearly Access"
+              href={yearlyRequestUrl}
               featured
             />
           </div>
@@ -874,7 +760,7 @@ function HomePage() {
 
         <section className="section compactSection" id="invite-only">
           <SectionHeader title="How invite-only access works">
-            Purchase access, enter your TradingView username, and receive manual activation for the private SatsOra indicator.
+            Request access by email, wait for approval and payment instructions, and receive manual activation after payment verification.
           </SectionHeader>
           <div className="stepGrid">
             {accessSteps.map(([title, text], index) => (
@@ -889,116 +775,19 @@ function HomePage() {
         </section>
 
         <section className="section" id="payment-method">
-          <SectionHeader title="Choose your payment method" />
-          <div className="paymentGrid">
-            <article className="card paymentCard">
-              <h3>Card checkout</h3>
-              <p>Pay securely through checkout and enter your TradingView username.</p>
-              <Button href={payhipMonthlyUrl} onClick={(event) => handlePayhipCheckout(payhipMonthlyUrl, event)}>Start Card Checkout</Button>
-            </article>
-            <article className="card paymentCard">
-              <h3>Manual crypto payment</h3>
-              <p>Available on request. Crypto payments are manual and irreversible. Always confirm the correct network and wallet address before sending.</p>
-              <button className="button buttonSecondary" type="button" onClick={() => setCryptoRequestOpen((isOpen) => !isOpen)}>
-                Request Crypto Payment Details
-              </button>
-            </article>
+          <SectionHeader title="Manual payment by email">
+            Email {links.email} with your selected plan and TradingView username. Wait for our approval and payment instructions before sending payment.
+          </SectionHeader>
+          <div className="stepGrid">
+            <article className="stepCard"><span>1</span><h3>Request access</h3><p>Choose monthly or yearly access and email your TradingView username to us.</p></article>
+            <article className="stepCard"><span>2</span><h3>Wait for approval</h3><p>We review your request and confirm approval, the amount, and manual payment instructions by email.</p></article>
+            <article className="stepCard"><span>3</span><h3>Pay and confirm</h3><p>Follow the emailed instructions and reply with your payment reference. We verify payment and approve access manually.</p></article>
           </div>
-          {cryptoRequestOpen && (
-            <article className="cryptoPanel" id="crypto-request">
-              <div className="cryptoPanelHeader">
-                <p className="eyebrow">Manual crypto payment</p>
-                <h3>Crypto payment instructions</h3>
-                <p>
-                  Manual crypto payments are available in BTC, ETH, USDT, and USDC. Please check the currency, network, and address carefully before sending. Crypto payments are irreversible and payments sent to the wrong address or wrong network may not be recoverable.
-                </p>
-              </div>
-
-              <div className="cryptoWarningBox">
-                <strong>Important:</strong>
-                <span>BTC is accepted only on the Bitcoin network. ETH, USDT, and USDC are accepted only through the Ethereum network. USDT and USDC must be sent as ERC-20 tokens. Use only the network stated for each payment card.</span>
-              </div>
-
-              <section className="cryptoSubsection" aria-labelledby="accepted-crypto-payments">
-                <h4 id="accepted-crypto-payments">Accepted crypto payments</h4>
-                <div className="acceptedCryptoGrid">
-                  {acceptedCryptoPayments.map(([currency, network]) => (
-                    <article key={currency}>
-                      <strong>{currency}</strong>
-                      <span>{network}</span>
-                    </article>
-                  ))}
-                </div>
-              </section>
-
-              <section className="cryptoSubsection" aria-label="Crypto QR payment cards">
-                <div className="cryptoQrGrid">
-                  {cryptoPaymentCards.map((card) => (
-                    <article className="cryptoQrCard" key={card.title}>
-                      <h4>{card.title}</h4>
-                      <p>{card.text}</p>
-                      <div className="cryptoQrFrame">
-                        <img src={card.image} alt={card.alt} loading="eager" decoding="sync" />
-                      </div>
-                      <p className="cryptoCardWarning">{card.warning}</p>
-                    </article>
-                  ))}
-                </div>
-              </section>
-
-              <section className="cryptoSubsection paymentAmountBox" aria-labelledby="payment-amount">
-                <h4 id="payment-amount">Payment amount</h4>
-                <div className="paymentAmountGrid">
-                  <div>
-                    <span>Monthly Access:</span>
-                    <strong>€19 equivalent</strong>
-                  </div>
-                  <div>
-                    <span>Yearly Access:</span>
-                    <strong>€149 equivalent</strong>
-                  </div>
-                </div>
-                <p>For crypto payments, send the equivalent amount at the time of payment. Network fees are the buyer's responsibility. Because crypto prices and network fees can change, access is activated after manual payment verification.</p>
-              </section>
-
-              <section className="cryptoSubsection" aria-labelledby="crypto-payment-steps">
-                <h4 id="crypto-payment-steps">Payment steps</h4>
-                <div className="cryptoStepsGrid">
-                  {cryptoPaymentSteps.map(([title, text], index) => (
-                    <article className="stepCard" key={title}>
-                      <span>{index + 1}</span>
-                      <h4>{title}</h4>
-                      <p>{text}</p>
-                    </article>
-                  ))}
-                </div>
-              </section>
-
-              <section className="accessFormCard cryptoRequestCard" aria-labelledby="crypto-access-form">
-                <h4 id="crypto-access-form">Submit crypto payment details</h4>
-                <p className="formHelper">After payment, submit your transaction hash and TradingView username so access can be verified manually. This form sends the details to {links.email}.</p>
-                <form onSubmit={handleAccessRequestSubmit}>
-                  <input className="honeypotField" name="_honey" tabIndex={-1} autoComplete="off" aria-hidden="true" />
-                  <label>Name<input name="Name" autoComplete="name" /></label>
-                  <label>Email<input name="email" type="email" autoComplete="email" required /></label>
-                  <label>TradingView username<input name="TradingView username" autoComplete="off" required /></label>
-                  <label>Selected plan<select name="Selected plan" required><option>Monthly Access</option><option>Yearly Access</option></select></label>
-                  <label>Payment currency<select name="Payment currency" required><option>BTC</option><option>ETH</option><option>USDT ERC-20</option><option>USDC ERC-20</option></select></label>
-                  <label>Transaction hash<input name="Transaction hash" autoComplete="off" required /></label>
-                  <label>Message<textarea name="Message" rows="4"></textarea></label>
-                  <button type="submit" disabled={accessFormStatus.type === 'submitting'}>
-                    {accessFormStatus.type === 'submitting' ? 'Sending...' : 'Submit Crypto Payment Details'}
-                  </button>
-                  <p className={`formStatus ${accessFormStatus.type}`} role="status" aria-live="polite">
-                    {accessFormStatus.message}
-                    {accessFormStatus.type === 'error' && (
-                      <> <a href={accessRequestMailto}>Email {links.email}</a></>
-                    )}
-                  </p>
-                </form>
-              </section>
-            </article>
-          )}
+          <div className="buttonRow">
+            <Button href={monthlyRequestUrl}>Request Monthly Access</Button>
+            <Button href={yearlyRequestUrl} variant="secondary">Request Yearly Access</Button>
+          </div>
+          <p className="noteBox">{accessTimingText}</p>
         </section>
 
         <section className="section" id="faq">
@@ -1021,8 +810,8 @@ function HomePage() {
             SatsOra gives you private TradingView access to BTC-first weekly BUY and SELL labels, designed for traders who want fewer signals, clearer structure, and full manual control.
           </SectionHeader>
           <div className="buttonRow center">
-            <Button href={payhipYearlyUrl} onClick={(event) => handlePayhipCheckout(payhipYearlyUrl, event)}>Get Yearly Access</Button>
-            <Button href={payhipMonthlyUrl} variant="secondary" onClick={(event) => handlePayhipCheckout(payhipMonthlyUrl, event)}>Start Monthly Access</Button>
+            <Button href={yearlyRequestUrl}>Request Yearly Access</Button>
+            <Button href={monthlyRequestUrl} variant="secondary">Request Monthly Access</Button>
           </div>
         </section>
       </main>
@@ -1030,7 +819,7 @@ function HomePage() {
       <footer className="footer">
         <div>
           <a className="logo" href="/"><span>SatsOra</span></a>
-          <p>SatsOra is operated by Sparkbyte Solutions Ltd. Educational chart analysis only. Not financial advice. Past performance does not guarantee future results.</p>
+          <p>Educational chart analysis only. Not financial advice. Past performance does not guarantee future results.</p>
           <p>This product is independent and is not affiliated with, endorsed by, or sponsored by TradingView.</p>
         </div>
         <nav aria-label="Footer navigation">
